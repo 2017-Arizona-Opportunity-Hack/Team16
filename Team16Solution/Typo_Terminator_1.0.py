@@ -15,15 +15,15 @@ if __name__ == '__main__':
     schools_file = input("Please input the file path for Standard School Names: ")
     new_data_file = input("Please input the file path for New Events (multiple sheets in one excel): ")
     save_to_path = input("Please input the path you would like to save the organized file: ")
- #   school_file = 'C:/Users/Zijie Yuan/Desktop/school address 2016.xlsx'
- #   new_data_file = 'C:/Users/Zijie Yuan/Desktop/2017 Programs & Participants.xlsx'
- #   save_to_path = 'C:/Users/Zijie Yuan/Desktop/SchoolNameStd.xlsx', engine='xlsxwriter'
+ #   school_file = 'C:/Users/Zijie Yuan/Desktop/Demo/school address 2016.xlsx'
+ #   new_data_file = 'C:/Users/Zijie Yuan/Desktop/Demo/2017 Programs & Participants.xlsx'
+ #   save_to_path = 'C:/Users/Zijie Yuan/Desktop/Demo/SchoolNameStd.xlsx'
     schools = pandas.read_excel(schools_file)
     new_data = pandas.ExcelFile(new_data_file)
     new_data_i = new_data.sheet_names
     std_school_name = schools['Name']
     
-    writer = pandas.ExcelWriter(save_to_path)
+    writer = pandas.ExcelWriter(save_to_path, engine='xlsxwriter')
     workbook = writer.book
     format1 = workbook.add_format({'bg_color':'#C6EFCE'}) # green
     format2 = workbook.add_format({'bg_color':'#FFC7CE'}) # red
