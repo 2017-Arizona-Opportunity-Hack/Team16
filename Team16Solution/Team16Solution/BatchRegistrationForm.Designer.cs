@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_selectEvent = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox_showEventFilePath = new System.Windows.Forms.TextBox();
-            this.dataGrid_excel = new System.Windows.Forms.DataGridView();
-            this.btn_addEvent = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox_WorkshopTitle = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox_WorkshopTitle = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_addEvent = new System.Windows.Forms.Button();
+            this.dataGrid_excel = new System.Windows.Forms.DataGridView();
+            this.btn_selectEvent = new System.Windows.Forms.Button();
+            this.textBox_showEventFilePath = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_excel)).BeginInit();
             this.SuspendLayout();
@@ -60,71 +60,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BatchRegistration";
             // 
-            // btn_selectEvent
+            // dateTimePicker1
             // 
-            this.btn_selectEvent.Location = new System.Drawing.Point(1651, 100);
-            this.btn_selectEvent.Name = "btn_selectEvent";
-            this.btn_selectEvent.Size = new System.Drawing.Size(288, 50);
-            this.btn_selectEvent.TabIndex = 2;
-            this.btn_selectEvent.Text = "Select";
-            this.btn_selectEvent.UseVisualStyleBackColor = true;
-            this.btn_selectEvent.Click += new System.EventHandler(this.btn_selectEvent_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 114);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(608, 36);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Please select the event registration excel file";
-            // 
-            // textBox_showEventFilePath
-            // 
-            this.textBox_showEventFilePath.Location = new System.Drawing.Point(685, 114);
-            this.textBox_showEventFilePath.Multiline = true;
-            this.textBox_showEventFilePath.Name = "textBox_showEventFilePath";
-            this.textBox_showEventFilePath.ReadOnly = true;
-            this.textBox_showEventFilePath.Size = new System.Drawing.Size(880, 36);
-            this.textBox_showEventFilePath.TabIndex = 1;
-            // 
-            // dataGrid_excel
-            // 
-            this.dataGrid_excel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid_excel.Location = new System.Drawing.Point(33, 168);
-            this.dataGrid_excel.Name = "dataGrid_excel";
-            this.dataGrid_excel.RowTemplate.Height = 33;
-            this.dataGrid_excel.Size = new System.Drawing.Size(1906, 838);
-            this.dataGrid_excel.TabIndex = 3;
-            // 
-            // btn_addEvent
-            // 
-            this.btn_addEvent.Location = new System.Drawing.Point(1651, 1031);
-            this.btn_addEvent.Name = "btn_addEvent";
-            this.btn_addEvent.Size = new System.Drawing.Size(288, 50);
-            this.btn_addEvent.TabIndex = 4;
-            this.btn_addEvent.Text = "Add";
-            this.btn_addEvent.UseVisualStyleBackColor = true;
-            this.btn_addEvent.Click += new System.EventHandler(this.btn_addEvent_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(218, 36);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Workshop title";
-            // 
-            // textBox_WorkshopTitle
-            // 
-            this.textBox_WorkshopTitle.Location = new System.Drawing.Point(251, 50);
-            this.textBox_WorkshopTitle.Multiline = true;
-            this.textBox_WorkshopTitle.Name = "textBox_WorkshopTitle";
-            this.textBox_WorkshopTitle.Size = new System.Drawing.Size(384, 36);
-            this.textBox_WorkshopTitle.TabIndex = 6;
+            this.dateTimePicker1.Location = new System.Drawing.Point(927, 54);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(310, 31);
+            this.dateTimePicker1.TabIndex = 8;
             // 
             // label3
             // 
@@ -136,12 +77,71 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Workshop date";
             // 
-            // dateTimePicker1
+            // textBox_WorkshopTitle
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(927, 54);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(310, 31);
-            this.dateTimePicker1.TabIndex = 8;
+            this.textBox_WorkshopTitle.Location = new System.Drawing.Point(251, 50);
+            this.textBox_WorkshopTitle.Multiline = true;
+            this.textBox_WorkshopTitle.Name = "textBox_WorkshopTitle";
+            this.textBox_WorkshopTitle.Size = new System.Drawing.Size(384, 36);
+            this.textBox_WorkshopTitle.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(27, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(218, 36);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Workshop title";
+            // 
+            // btn_addEvent
+            // 
+            this.btn_addEvent.Location = new System.Drawing.Point(1651, 1031);
+            this.btn_addEvent.Name = "btn_addEvent";
+            this.btn_addEvent.Size = new System.Drawing.Size(288, 50);
+            this.btn_addEvent.TabIndex = 4;
+            this.btn_addEvent.Text = "Add";
+            this.btn_addEvent.UseVisualStyleBackColor = true;
+            this.btn_addEvent.Click += new System.EventHandler(this.btn_addEvent_Click);
+            // 
+            // dataGrid_excel
+            // 
+            this.dataGrid_excel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_excel.Location = new System.Drawing.Point(33, 168);
+            this.dataGrid_excel.Name = "dataGrid_excel";
+            this.dataGrid_excel.RowTemplate.Height = 33;
+            this.dataGrid_excel.Size = new System.Drawing.Size(1906, 838);
+            this.dataGrid_excel.TabIndex = 3;
+            // 
+            // btn_selectEvent
+            // 
+            this.btn_selectEvent.Location = new System.Drawing.Point(1651, 100);
+            this.btn_selectEvent.Name = "btn_selectEvent";
+            this.btn_selectEvent.Size = new System.Drawing.Size(288, 50);
+            this.btn_selectEvent.TabIndex = 2;
+            this.btn_selectEvent.Text = "Select";
+            this.btn_selectEvent.UseVisualStyleBackColor = true;
+            this.btn_selectEvent.Click += new System.EventHandler(this.btn_selectEvent_Click);
+            // 
+            // textBox_showEventFilePath
+            // 
+            this.textBox_showEventFilePath.Location = new System.Drawing.Point(685, 114);
+            this.textBox_showEventFilePath.Multiline = true;
+            this.textBox_showEventFilePath.Name = "textBox_showEventFilePath";
+            this.textBox_showEventFilePath.ReadOnly = true;
+            this.textBox_showEventFilePath.Size = new System.Drawing.Size(880, 36);
+            this.textBox_showEventFilePath.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(27, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(608, 36);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Please select the event registration excel file";
             // 
             // BatchRegistrationForm
             // 
@@ -149,7 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1994, 1131);
             this.Controls.Add(this.groupBox1);
-            this.MaximumSize = new System.Drawing.Size(2020, 1266);
+            this.MaximumSize = new System.Drawing.Size(2020, 1202);
             this.Name = "BatchRegistrationForm";
             this.Text = "BatchRegistrationForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

@@ -20,25 +20,31 @@ namespace MainHack
         private void sign_up_button_Click(object sender, EventArgs e)
         {
             // Hide the main menu
-            this.Visible = false;
+            //this.Visible = false;
 
             // Show the Sign up form
             SignUpInformation signNext = new SignUpInformation();
             signNext.ShowDialog();
 
             // Delete this Box from memory
-            this.Close();
+            //this.Close();
         }
 
         private void constant_contact_Click(object sender, EventArgs e)
         {
             // Show the Sign up form
-            SignUpInformation signNext = new SignUpInformation();
-            signNext.ShowDialog();
+            BatchRegistrationForm batchRegistrationForm = new BatchRegistrationForm();
+            batchRegistrationForm.ShowDialog();
 
             // Delete this Box from memory
-            this.Close();
+            //this.Close();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BatchRegistrationForm batchRegistrationForm = new BatchRegistrationForm();
+            batchRegistrationForm.ShowDialog();
         }
     }
 }

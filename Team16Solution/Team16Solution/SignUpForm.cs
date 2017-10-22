@@ -48,6 +48,15 @@ namespace MainHack
         bool updated_info = false;
         int update_index = 0;
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            // Code
+            if (excelApp != null) excelApp.Quit();
+            if (TeachersApp != null) TeachersApp.Quit();
+            if (EventsApp != null) EventsApp.Quit();
+        }
+
         public Form2(string school_db, string teacher_db, string Event_db, string nameEvent, string date, string year)
         {
             InitializeComponent();
@@ -83,7 +92,7 @@ namespace MainHack
             {
                 school_list.Add((string)values[i, 1]);
                 school_county_list.Add((string)values[i, 5]);
-                school_city_list.Add((string)values[i, 3]);
+                school_city_list.Add((string)values[i, 2]);
                 school_district_list.Add((string)values[i, 6]);
             }
 
@@ -135,26 +144,26 @@ namespace MainHack
             TeachersApp.DisplayAlerts = false;
             workbook = TeachersApp.Workbooks.Open(Filename: pathOfTeachersTable , ReadOnly: false);
             sheets = workbook.Sheets;
-            sheet = sheets.get_Item("Info") as Worksheet;
+            sheet = sheets.get_Item("Sheet1") as Worksheet;
 
             // Open another excel file to perform "fill information" 
             EventsApp = new Excel.Application();
             EventsApp.DisplayAlerts = false;
             event_workbook = EventsApp.Workbooks.Open(Filename: pathOfEventTable, ReadOnly: false);
             event_sheets = event_workbook.Sheets;
-            event_sheet = event_sheets.get_Item("Info") as Worksheet;
+            event_sheet = event_sheets.get_Item("Sheet1") as Worksheet;
 
         }
 
         ~Form2()  // destructor
         {
             //Remove the hold on 
-            workbook.Close();
-            TeachersApp.Quit();
+           // if (workbook != null) workbook.Close();
+           // if (TeachersApp != null) TeachersApp.Quit();
 
             //Remove the hold on 
-            event_workbook.Close();
-            EventsApp.Quit();
+           // if (event_workbook != null) event_workbook.Close();
+            //if (EventsApp != null) EventsApp.Quit();
         }
 
         private void OnSelectedIndexChanged(object sender, EventArgs e)

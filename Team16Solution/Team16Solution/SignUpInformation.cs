@@ -21,8 +21,8 @@ namespace MainHack
         {
             InitializeComponent();
 
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd/MM yyyy";
+       //     dateTimePicker1.Format = DateTimePickerFormat.Custom;
+       //     dateTimePicker1.CustomFormat = "dd/MM/yyyy yyyy";
 
         }
 
@@ -77,7 +77,7 @@ namespace MainHack
                 string[] date_information = dateTimePicker1.Text.Split(whitespace);
 
                 //Call the signUp form
-                Form2 fm2 = new Form2(label1.Text, label2.Text, label3.Text, EventName.Text, date_information[0], date_information[1]);
+                Form2 fm2 = new Form2(label1.Text, label2.Text, label3.Text, EventName.Text, dateTimePicker1.Text, dateTimePicker1.Value.Year.ToString());
                 fm2.ShowDialog();
 
                 // Delete this Box from memory

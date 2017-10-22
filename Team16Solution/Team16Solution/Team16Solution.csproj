@@ -71,6 +71,12 @@
     <Compile Include="SignUpInformation.designer.cs">
       <DependentUpon>SignUpInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="TypoTerminatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TypoTerminatorForm.Designer.cs">
+      <DependentUpon>TypoTerminatorForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BatchRegistrationForm.resx">
       <DependentUpon>BatchRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="SignUpInformation.resx">
       <DependentUpon>SignUpInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypoTerminatorForm.resx">
+      <DependentUpon>TypoTerminatorForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

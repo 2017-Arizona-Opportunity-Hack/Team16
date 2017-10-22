@@ -62,24 +62,8 @@ namespace MainHack
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            /********************************************** Validate user input for the DB **************************************/
 
 
-
-            // TO-BE-DONE: Check if the teacher already exists in the Teacher table.
- //           String excelConn = "Provider=Microsoft.Ace.Oledb.12.0;Data Source=" + TEACHERS_FILE_PATH + ";Extended Properties=\"Excel 8.0;HDR=Yes;\";";
- //           OleDbDataAdapter oda = new OleDbDataAdapter("Select * from [" + TEACHERS_WORKSHEET + "]", excelConn);
- //           DataTable dt = new DataTable();
- //           oda.Fill(dt);
-              HashSet<String> teachersNameSet = new HashSet<string>();
- //           foreach (DataRow row in dt.Rows)
-  //          {
- //               teachersNameSet.Add(row["First Name"].ToString() + " " + row["Last Name"].ToString());
- //               MessageBox.Show(row["First Name"].ToString() + " " + row["Last Name"].ToString(),
- //   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
- //           }
-
-            /******************************************** Validate user input for the DB end *******************************************/
 
             Excel.Application oXL;
             Excel._Workbook oWB, oWB2;
@@ -101,6 +85,7 @@ namespace MainHack
             oRng = oSheet.UsedRange;
             oRng2 = oSheet2.UsedRange;
             oXL.Visible = true;
+            HashSet<String> teachersNameSet = new HashSet<string>();
             for (int i = 1; i < teachersRowsCount; i++)
             {
                 teachersNameSet.Add(oSheet.Cells[i + 1, 1].Value + " " + oSheet.Cells[i + 1, 2].Value);
