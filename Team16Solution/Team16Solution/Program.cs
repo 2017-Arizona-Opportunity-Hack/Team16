@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Team16Solution
+namespace MainHack
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Team16Solution
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BatchRegistrationForm());
+            Application.Run(new Form1());
         }
     }
 }

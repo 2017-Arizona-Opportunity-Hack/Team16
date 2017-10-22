@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Team16Solution.Properties
+namespace MainHack.Properties
 {
 
 

@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace Team16Solution
+namespace MainHack
 {
     public partial class BatchRegistrationForm : Form
     {
         readonly String EXCEL_WORKSHEET = "Sheet1$";
-        readonly String TEACHERS_WORKSHEET = "sheet1$";
-        readonly String TEACHERS_FILE_PATH = "C:\\Users\\evanxia\\Source\\Repos\\OpporHack\\Team16\\Team16Solution\\Team16Solution\\Data\\Teachers.xlsx";
-        readonly String WORKSHOP_FILE_PATH = "C:\\Users\\evanxia\\Source\\Repos\\OpporHack\\Team16\\Team16Solution\\Team16Solution\\Data\\Workshop-attending.xlsx";
+        readonly String TEACHERS_WORKSHEET = "Sheet1$";
+        readonly String TEACHERS_FILE_PATH = @"C:\Users\evanxia\Source\Repos\OpporHack\Team16\Team16Solution\Team16Solution\Data\Teachers.xlsx";
+        readonly String WORKSHOP_FILE_PATH = @"C:\Users\evanxia\Source\Repos\OpporHack\Team16\Team16Solution\Team16Solution\Data\Workshop-attending.xlsx";
         public BatchRegistrationForm()
         {
             InitializeComponent();
@@ -62,13 +62,32 @@ namespace Team16Solution
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            /********************************************** Validate user input for the DB **************************************/
+
+
+
+            // TO-BE-DONE: Check if the teacher already exists in the Teacher table.
+ //           String excelConn = "Provider=Microsoft.Ace.Oledb.12.0;Data Source=" + TEACHERS_FILE_PATH + ";Extended Properties=\"Excel 8.0;HDR=Yes;\";";
+ //           OleDbDataAdapter oda = new OleDbDataAdapter("Select * from [" + TEACHERS_WORKSHEET + "]", excelConn);
+ //           DataTable dt = new DataTable();
+ //           oda.Fill(dt);
+              HashSet<String> teachersNameSet = new HashSet<string>();
+ //           foreach (DataRow row in dt.Rows)
+  //          {
+ //               teachersNameSet.Add(row["First Name"].ToString() + " " + row["Last Name"].ToString());
+ //               MessageBox.Show(row["First Name"].ToString() + " " + row["Last Name"].ToString(),
+ //   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+ //           }
+
+            /******************************************** Validate user input for the DB end *******************************************/
+
             Excel.Application oXL;
             Excel._Workbook oWB, oWB2;
             Excel._Worksheet oSheet, oSheet2;
             Excel.Range oRng, oRng2;
             //Start Excel and get Application object.
             oXL = new Microsoft.Office.Interop.Excel.Application();
-            oXL.Visible = true;
+            
             //Get a new workbook.
             oWB = (Microsoft.Office.Interop.Excel._Workbook)(oXL.Workbooks.Open(TEACHERS_FILE_PATH));
             oWB2 = (Microsoft.Office.Interop.Excel._Workbook)(oXL.Workbooks.Open(WORKSHOP_FILE_PATH));
@@ -78,7 +97,16 @@ namespace Team16Solution
             oRng2 = oSheet2.UsedRange;
             int teachersRowsCount = oRng.Rows.Count;
             int workshopRowsCount = oRng2.Rows.Count;
-            for (int i = 0; i < dataGrid_excel.Rows.Count - 1; i++)
+            /********************************************** Writing the Excel files **************************************/
+            oRng = oSheet.UsedRange;
+            oRng2 = oSheet2.UsedRange;
+            oXL.Visible = true;
+            for (int i = 1; i < teachersRowsCount; i++)
+            {
+                teachersNameSet.Add(oSheet.Cells[i + 1, 1].Value + " " + oSheet.Cells[i + 1, 2].Value);
+            }
+
+                for (int i = 0; i < dataGrid_excel.Rows.Count - 1; i++)
             {
                 String firstName = dataGrid_excel.Rows[i].Cells["First Name"].Value.ToString();
                 String lastName = dataGrid_excel.Rows[i].Cells["Last Name"].Value.ToString();
@@ -92,21 +120,40 @@ namespace Team16Solution
 
                 try
                 {
-                    oSheet.Cells[i + teachersRowsCount + 1, 1] = firstName;
-                    oSheet.Cells[i + teachersRowsCount + 1, 2] = lastName;
-                    oSheet.Cells[i + teachersRowsCount + 1, 3] = preferredEmail;
-                    oSheet.Cells[i + teachersRowsCount + 1, 4] = schoolName;
-                    oSheet.Cells[i + teachersRowsCount + 1, 5] = schoolDistrict;
-                    oSheet.Cells[i + teachersRowsCount + 1, 6] = city;
-                    oSheet.Cells[i + teachersRowsCount + 1, 7] = county;
-                    oSheet.Cells[i + teachersRowsCount + 1, 8] = gradeTaught;
-                    oSheet.Cells[i + teachersRowsCount + 1, 9] = subjectsTaught;
-
-                    oSheet2.Cells[i * 10 + workshopRowsCount + 1, 1] = dateTimePicker1.Value.Year;
-                    oSheet2.Cells[i * 10 + workshopRowsCount + 1, 2] = dateTimePicker1.Text;
-                    oSheet2.Cells[i * 10 + workshopRowsCount + 1, 3] = textBox_WorkshopTitle.Text;
-                    oSheet2.Cells[i * 10 + workshopRowsCount + 1, 4] = firstName;
-                    oSheet2.Cells[i * 10 + workshopRowsCount + 1, 5] = lastName;
+                    if (!teachersNameSet.Contains(firstName + " " + lastName))
+                    {
+                        oSheet.Cells[i + teachersRowsCount + 1, 1] = firstName;
+                        oSheet.Cells[i + teachersRowsCount + 1, 2] = lastName;
+                        oSheet.Cells[i + teachersRowsCount + 1, 3] = preferredEmail;
+                        oSheet.Cells[i + teachersRowsCount + 1, 4] = schoolName;
+                        oSheet.Cells[i + teachersRowsCount + 1, 5] = schoolDistrict;
+                        oSheet.Cells[i + teachersRowsCount + 1, 6] = city;
+                        oSheet.Cells[i + teachersRowsCount + 1, 7] = county;
+                        oSheet.Cells[i + teachersRowsCount + 1, 8] = gradeTaught;
+                        oSheet.Cells[i + teachersRowsCount + 1, 9] = subjectsTaught;
+                    } else
+                    {
+                        MessageBoxButtons messButton = MessageBoxButtons.YesNo;
+                        DialogResult dr = MessageBox.Show(firstName + " " + lastName + " already exists in the Excel file\n Do you want to add this record anyways?", "Spreadsheet Validation", messButton);
+                        if (dr == DialogResult.Yes)
+                        {
+                            oSheet.Cells[i + teachersRowsCount + 1, 1] = firstName;
+                            oSheet.Cells[i + teachersRowsCount + 1, 2] = lastName;
+                            oSheet.Cells[i + teachersRowsCount + 1, 3] = preferredEmail;
+                            oSheet.Cells[i + teachersRowsCount + 1, 4] = schoolName;
+                            oSheet.Cells[i + teachersRowsCount + 1, 5] = schoolDistrict;
+                            oSheet.Cells[i + teachersRowsCount + 1, 6] = city;
+                            oSheet.Cells[i + teachersRowsCount + 1, 7] = county;
+                            oSheet.Cells[i + teachersRowsCount + 1, 8] = gradeTaught;
+                            oSheet.Cells[i + teachersRowsCount + 1, 9] = subjectsTaught;
+                        }
+                    }
+                    
+                    oSheet2.Cells[i + workshopRowsCount + 1, 1] = dateTimePicker1.Value.Year;
+                    oSheet2.Cells[i + workshopRowsCount + 1, 2] = dateTimePicker1.Text;
+                    oSheet2.Cells[i + workshopRowsCount + 1, 3] = textBox_WorkshopTitle.Text;
+                    oSheet2.Cells[i + workshopRowsCount + 1, 4] = firstName;
+                    oSheet2.Cells[i + workshopRowsCount + 1, 5] = lastName;
                 }
                 catch (Exception theException)
                 {
@@ -117,21 +164,11 @@ namespace Team16Solution
                     errorMessage = String.Concat(errorMessage, theException.Source);
                     MessageBox.Show(errorMessage, "Error");
                 }
-
-
-
-
-
-
-                /********************************************** Validate user input for the DB **************************************/
-
-                // TO-BE-DONE: Check if the teacher already exists in the Teacher table.
-
-                /******************************************** Validate user input for the DB end *******************************************/
             }
 
-            //oSheet.Range.AllocateChanges();
+           // oXL.Workbooks.Close();
+            /********************************************** Writing the Excel files end**************************************/
         }
-      
+
     }
 }

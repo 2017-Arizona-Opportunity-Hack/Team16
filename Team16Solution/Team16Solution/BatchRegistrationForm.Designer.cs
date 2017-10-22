@@ -1,4 +1,4 @@
-﻿namespace Team16Solution
+﻿namespace MainHack
 {
     partial class BatchRegistrationForm
     {
